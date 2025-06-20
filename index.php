@@ -46,7 +46,7 @@
         }
         function setAge($Age)
         {
-            return $this->name = $Age;
+            return $this->age = $Age;
         }
     }
 
@@ -112,17 +112,17 @@
             return self::$skin;
         }
     }
-    $man = new Man('Max', 25); //父類別的所有類型跟方法都可以使用
-    echo $man->getName();
-    echo "<br>";
-    echo $man->getGender();
-    echo "<br>";
-    $man->greet();
+    //$man = new Man('Max', 25); //父類別的所有類型跟方法都可以使用
+    //echo $man->getName();
+    //echo "<br>";
+    //echo $man->getGender();
+    //echo "<br>";
+    //$man->greet();
 
     echo Man::$skin;
     echo Man::getSkin();
     echo "<hr>";
-    
+
     $woman = new Woman('Mitty', 20);
     echo $woman->getName();
     echo "<br>";
@@ -132,8 +132,7 @@
 
     //檢查某個變數是不是物件
     var_dump($jason instanceof Person); // 會印出 bool(true)
-    var_dump($man instanceof Person);   // 也會印出 bool(true)
-    var_dump($man instanceof Man);      // 也是 true
+
 
     ?>
 </body>
