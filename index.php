@@ -13,11 +13,11 @@ class Person {
     //private:私有的屬性，只能在類別(物件)內部訪問
     //protected:受保護的屬性，只能在類別(物件)內部或子類中訪問
 
-    public $name;
-    public $age;
+    protected $name;
+    protected $age;
 
     //方法,行為,透過建構函式告知name跟age  
-    public function __construct($name , $age){//沒寫屬性的話預設都是public
+    public function __construct($name , $age){
         $this->name =$name;//this = Person
         $this->age =$age;
     }
@@ -27,10 +27,10 @@ class Person {
     public function greet(){
         echo "Hello my name is {$this->name} and  I'm  {$this->age} years old. <br>";
     }
-    function getName(){
+    public function getName(){
         return $this->name;
     }
-    function getAge(){
+    function getAge(){//沒寫屬性的話預設都是public
         return $this->age;
     }
     function setName($name){
@@ -41,7 +41,7 @@ class Person {
     }
 }    
     
-
+//封裝
 $jason = new Person('jason',18);
 echo $jason->getName();
 echo "<br>" ;
@@ -62,11 +62,38 @@ $jason->greet();
 ?>
 
 <hr>
-<h2>繼承.</h2>
+<h2>繼承</h2>
 <?php
+class Man extends Person{ //即使沒東西，
+    private $gender='男性';
 
+    function getGender(){
+        return $this->gender;
+    }
+}
 
+class Woman extends Person{ 
+    private $gender='女性';
 
+    function getGender(){
+        return $this->gender;
+    }
+}
+$man = new Man('Max',25); //父類別的所有類型跟方法都可以使用
+echo $man->getName();
+echo "<br>";
+echo $man->getGender();
+echo "<br>";
+$man->greet();
+
+echo "<br>";
+
+$woman = new Woman('Mitty',20); 
+echo $woman->getName();
+echo "<br>";
+echo $woman->getGender();
+echo "<br>";
+$woman->greet();
 ?>
 </body>
 </html>
