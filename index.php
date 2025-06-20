@@ -64,11 +64,20 @@ $jason->greet();
 <hr>
 <h2>繼承</h2>
 <?php
-class Man extends Person{ //即使沒東西，
+Interface PersonInterface {
+    public function getGender();
+    public function say();
+
+}
+
+class Man extends Person implements PersonInterface { //即使沒東西，
     private $gender='男性';
 
     function getGender(){
         return $this->gender;
+    }
+    function say(){
+
     }
 }
 
@@ -94,6 +103,12 @@ echo "<br>";
 echo $woman->getGender();
 echo "<br>";
 $woman->greet();
+
+//檢查某個變數是不是物件
+var_dump($jason instanceof Person); // 會印出 bool(true)
+var_dump($man instanceof Person);   // 也會印出 bool(true)
+var_dump($man instanceof Man);      // 也是 true
+
 ?>
 </body>
 </html>
