@@ -25,6 +25,15 @@ function q($sql){
     
 }
 
+/**
+ * DB類別
+ * 用於簡化資料庫操作
+ * 提供常用的CRUD方法
+ * @package DB
+ * @version 1.0
+ * 
+ */
+
 class DB{
     private $pdo;
     private $dsn="mysql:host=localhost;dbname=store;charset=utf8";
@@ -93,7 +102,7 @@ function update($data){
     $sql="UPDATE $this->table SET ".join(" , ",$tmp)."
                       WHERE id='{$data['id']}'";
     
-     echo $sql;
+    //echo $sql;
     return $this->pdo->exec($sql);
 
 }
@@ -108,7 +117,7 @@ function insert($data){
 
     $keys=array_keys($data);
     $sql="INSERT INTO $this->table (`".join("`,`",$keys)."`) values('".join("','",$data)."');";
-    echo $sql;
+    //echo $sql;
     return $this->pdo->exec($sql);
 }
 
@@ -162,13 +171,10 @@ private function array2sql($array){
     return $tmp;
 }
 
-public function q($sql){
-    return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-}
+
 }
 
 $Item=new DB('items');
 $Sales=new DB('sales');
-dd($Item->find(['id'=>4]));
 
-$Item->q($this->$sql);
+
